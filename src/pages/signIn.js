@@ -1,67 +1,49 @@
-const LoginForm = () => {
+// pages/login.js
+
+const LoginPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800 text-center">
-          Sign In
-        </h2>
-        <form>
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
-              type="email"
-              id="email"
-              name="email"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              className="block text-gray-600 text-sm mb-2"
-              htmlFor="password"
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="bg-white p-8 shadow-md rounded-lg">
+        <h1 className="text-2xl font-semibold mb-4 text-center">Login</h1>
+        <div className="space-y-4">
+          <button className="bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              Password
-            </label>
-            <input
-              className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
-              type="password"
-              id="password"
-              name="password"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <button
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded focus:outline-none"
-              type="submit"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 21v-2M3 16.555A9.001 9.001 0 0112 2a9.001 9.001 0 018.155 13.455l-2.063-2.063A6.978 6.978 0 0012 4a6.978 6.978 0 00-6.092 3.442L3.845 5.392A8.962 8.962 0 012 12a8.962 8.962 0 01.845 4.608l2.063-2.063A6.978 6.978 0 0012 20a6.978 6.978 0 006.092-3.442l2.063 2.063A8.962 8.962 0 0122 12a8.962 8.962 0 01-.845-4.608l-2.063 2.063A6.978 6.978 0 0012 20a6.978 6.978 0 01-6.092-3.442L3.845 18.608z"
+              />
+            </svg>
+            <span>Sign in with Google</span>
+          </button>
+          <button className="bg-gray-800 text-white p-3 rounded-lg flex items-center justify-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              Signin
-            </button>
-          </div>
-        </form>
-
-        {/* Social Authentication Buttons */}
-        <div className="text-center">
-          <p className="text-gray-600">Or register with</p>
-          <div className="flex justify-center mt-2">
-            {/* Google Button */}
-            <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded mr-4">
-              <i className="fab fa-google mr-2"></i> Google
-            </button>
-
-            {/* GitHub Button */}
-            <button className="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded">
-              <i className="fab fa-github mr-2"></i> GitHub
-            </button>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16v-4m0 0V8m0 4h2m-2 9a9 9 0 110-18 9 9 0 010 18z"
+              />
+            </svg>
+            <span>Sign in with GitHub</span>
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default LoginPage;

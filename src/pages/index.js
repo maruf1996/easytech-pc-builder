@@ -1,7 +1,14 @@
-export default function Home() {
+import HoreBanner from "@/components/UI/HoreBanner";
+import RootLayout from "@/components/layouts/RootLayout";
+
+export default function HomePage() {
   return (
-    <div className="">
-      <h1>This is home page</h1>
+    <div className="min-h-screen">
+      <HoreBanner></HoreBanner>
     </div>
   );
 }
+
+HomePage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};

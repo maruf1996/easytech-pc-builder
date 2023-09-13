@@ -1,8 +1,13 @@
-// pages/404.js or pages/_error.js
-
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const NotfoundPage = () => {
+  const router = useRouter();
+
+  setTimeout(() => {
+    router.push("/");
+  }, 5000);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-indigo-200">
       <div className="bg-white p-8 rounded-lg shadow-md text-center">

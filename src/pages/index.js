@@ -34,5 +34,6 @@ export const getStaticProps = async () => {
     props: {
       products: randomProducts,
     },
+    revalidate: 10,
   };
 };

@@ -1,27 +1,14 @@
+import RootLayout from "@/components/layouts/RootLayout";
 import Link from "next/link";
 
-const FeaturedProduc = ({ products }) => {
+const CategoryPage = ({ data }) => {
   return (
     <div className="md:px-16 px-4 my-8">
-      <div className="">
-        <h1 className="text-center font-bold text-3xl">Featured Products</h1>
-        <p className="text-justify my-8">
-          Check out our selection of top-rated featured products. These
-          high-quality items have received excellent reviews from our satisfied
-          customers. Whether youre a gamer, content creator, or building a
-          powerful workstation, our featured products are designed to meet your
-          specific needs and deliver exceptional performance.
-        </p>
-      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {products?.map((product, idx) => (
+        {data?.map((product, idx) => (
           <div key={idx} className="card  shadow-xl">
             <figure>
-              <img
-                src={product?.image}
-                alt="Shoes"
-                className="w-full max-h-72"
-              />
+              <img src={product?.image} alt="Shoes" />
             </figure>
             <div className="card-body">
               <h2 className="card-title text-primary">
@@ -60,4 +47,37 @@ const FeaturedProduc = ({ products }) => {
   );
 };
 
-export default FeaturedProduc;
+export default CategoryPage;
+
+CategoryPage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch("http://localhost:5000/catagories");
+  const data = await res.json();
+
+  const paths = data?.data?.map((product) => ({
+    params: {
+      categoryId: product.category,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  const res = await fetch(
+    `http://localhost:5000/catagories/${params.categoryId}`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      data: data,
+    },
+  };
+};

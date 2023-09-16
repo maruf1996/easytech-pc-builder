@@ -22,7 +22,10 @@ const PcBuilderPage = ({ data }) => {
                 <th className="py-3 px-4 border">{category?.category}</th>
                 <td className="py-3 px-4 border ">{"N/A"}</td>
                 <td className="py-3 px-4 border text-center">
-                  <Link href="/" className="btn btn-sm btn-primary">
+                  <Link
+                    href={`/pc-builder/${category.category}`}
+                    className="btn btn-sm btn-primary"
+                  >
                     Choose
                   </Link>
                 </td>

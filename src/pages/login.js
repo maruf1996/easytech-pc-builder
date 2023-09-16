@@ -1,12 +1,19 @@
 // pages/login.js
 
+import { signIn } from "next-auth/react";
+
 const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 shadow-md rounded-lg">
         <h1 className="text-2xl font-semibold mb-4 text-center">Login</h1>
         <div className="space-y-4">
-          <button className="bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center space-x-2">
+          <button
+            onClick={() =>
+              signIn("google", { callbackUrl: "http://localhost:3000/" })
+            }
+            className="bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center space-x-2"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6"
@@ -23,7 +30,12 @@ const LoginPage = () => {
             </svg>
             <span>Sign in with Google</span>
           </button>
-          <button className="bg-gray-800 text-white p-3 rounded-lg flex items-center justify-center space-x-2">
+          <button
+            onClick={() =>
+              signIn("github", { callbackUrl: "http://localhost:3000/" })
+            }
+            className="bg-gray-800 text-white p-3 rounded-lg flex items-center justify-center space-x-2"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6"

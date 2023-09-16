@@ -1,7 +1,41 @@
 import RootLayout from "@/components/layouts/RootLayout";
+import { removeItem } from "@/redux/features/cart/cartSlice";
 import Link from "next/link";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const PcBuilderPage = ({ data }) => {
+  const { components } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const [selectedProducts, setSelectedProducts] = useState({});
+
+  const handleSelectProduct = (category, productName) => {
+    setSelectedProducts((prevSelected) => ({
+      ...prevSelected,
+      [category]: productName,
+    }));
+  };
+
+  const handleRemoveBuilder = (category) => {
+    setSelectedProducts((prevSelected) => ({
+      ...prevSelected,
+      [category]: null,
+    }));
+    dispatch(removeItem(category));
+  };
+
+  // Map the selected product names outside the component
+  const categoryProductMap = {};
+  components.forEach((component) => {
+    if (component.category && component.product_name) {
+      categoryProductMap[component.category] = component.product_name;
+    }
+  });
+
+  // Count the number of selected products under the 'Selected Product' column
+  const selectedProductCount =
+    Object.values(categoryProductMap).filter(Boolean).length;
+
   return (
     <div className="w-11/12 mx-auto mt-10">
       <div className="overflow-x-auto">
@@ -20,17 +54,29 @@ const PcBuilderPage = ({ data }) => {
             {data?.data?.map((category, index) => (
               <tr key={index} className="bg-white">
                 <th className="py-3 px-4 border">{category?.category}</th>
-                <td className="py-3 px-4 border ">{"N/A"}</td>
+                <td className="py-3 px-4 border ">
+                  {categoryProductMap[category.category] || "N/A"}
+                </td>
                 <td className="py-3 px-4 border text-center">
-                  <Link
-                    href={`/pc-builder/${category.category}`}
-                    className="btn btn-sm btn-primary"
-                  >
-                    Choose
+                  <Link href={`/pc-builder/${category.category}`}>
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={() =>
+                        handleSelectProduct(
+                          category.category,
+                          category.product_name
+                        )
+                      }
+                    >
+                      Choose
+                    </button>
                   </Link>
                 </td>
                 <td className="py-3 px-4 border text-center">
-                  <button className="btn btn-sm bg-red-600 hover:bg-red-700 text-white">
+                  <button
+                    onClick={() => handleRemoveBuilder(category.category)}
+                    className="btn btn-sm bg-red-600 hover:bg-red-700 text-white"
+                  >
                     Delete
                   </button>
                 </td>
@@ -40,12 +86,15 @@ const PcBuilderPage = ({ data }) => {
         </table>
         <div className="flex justify-center">
           <button
-            className="btn btn-disabled my-8"
+            className="btn btn-primary my-8"
             tabIndex="-1"
             role="button"
             aria-disabled="true"
+            disabled={selectedProductCount <= 5}
           >
-            Please Add More Products
+            {selectedProductCount <= 5
+              ? "Please add more products"
+              : "Complete Order"}
           </button>
         </div>
       </div>

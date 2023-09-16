@@ -1,6 +1,17 @@
 import RootLayout from "@/components/layouts/RootLayout";
+import { addItem } from "@/redux/features/cart/cartSlice";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 const PcBuilderDetailsPage = ({ data }) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleAddToBuilder = (product) => {
+    dispatch(addItem(product));
+    router.push("/pc-builder");
+  };
+
   return (
     <div className="md:px-16 px-4 my-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -32,7 +43,10 @@ const PcBuilderDetailsPage = ({ data }) => {
               </p>
               <div className="card-actions justify-end">
                 <button>
-                  <button className="btn btn-primary uppercase">
+                  <button
+                    onClick={() => handleAddToBuilder(product)}
+                    className="btn btn-primary uppercase"
+                  >
                     Add to Builder
                   </button>
                 </button>

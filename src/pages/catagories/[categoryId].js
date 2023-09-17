@@ -54,7 +54,9 @@ CategoryPage.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/catagories");
+  const res = await fetch(
+    "https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/catagories"
+  );
   const data = await res.json();
 
   const paths = data?.data?.map((product) => ({
@@ -71,7 +73,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(
-    `http://localhost:5000/catagories/${params.categoryId}`
+    `https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/catagories/${params.categoryId}`
   );
   const data = await res.json();
 

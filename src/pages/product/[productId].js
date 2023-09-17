@@ -84,7 +84,9 @@ ProductDetailsPage.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch(
+    "https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/products"
+  );
   const data = await res.json();
   //   console.log(data);
 
@@ -101,7 +103,9 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:5000/product/${params.productId}`);
+  const res = await fetch(
+    `https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/product/${params.productId}`
+  );
   const data = await res.json();
 
   return {

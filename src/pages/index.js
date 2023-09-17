@@ -31,7 +31,9 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/products");
+  const res = await fetch(
+    "https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/products"
+  );
   const data = await res.json();
 
   const firstProductOfEachCategory = {};

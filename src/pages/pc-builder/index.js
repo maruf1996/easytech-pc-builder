@@ -74,7 +74,7 @@ const PcBuilderPage = ({ data }) => {
                 </td>
                 <td className="py-3 px-4 border text-center">
                   <button
-                    onClick={() => handleRemoveBuilder(category.category)}
+                    onClick={() => handleRemoveBuilder(category?.category)}
                     className="btn btn-sm bg-red-600 hover:bg-red-700 text-white"
                   >
                     Delete
@@ -90,9 +90,9 @@ const PcBuilderPage = ({ data }) => {
             tabIndex="-1"
             role="button"
             aria-disabled="true"
-            disabled={selectedProductCount <= 5}
+            disabled={selectedProductCount <= 6}
           >
-            {selectedProductCount <= 5
+            {selectedProductCount <= 6
               ? "Please add more products"
               : "Complete Order"}
           </button>
@@ -109,7 +109,9 @@ PcBuilderPage.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:5000/allcategories");
+  const res = await fetch(
+    "https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/allcategories"
+  );
   const data = await res.json();
   //   console.log(data);
 

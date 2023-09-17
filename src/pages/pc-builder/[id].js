@@ -66,7 +66,9 @@ PcBuilderDetailsPage.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:5000/catagories/${params.id}`);
+  const res = await fetch(
+    `https://easytech-pc-builder-server-idr0vhqns-maruf1996.vercel.app/catagories/${params.id}`
+  );
   const data = await res.json();
 
   return {

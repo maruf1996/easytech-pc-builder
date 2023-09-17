@@ -5,17 +5,13 @@ const FeaturedProduc = ({ products }) => {
     <div className="md:px-16 px-4 my-8">
       <div className="">
         <h1 className="text-center font-bold text-3xl">Featured Products</h1>
-        <p className="text-justify my-8">
-          Check out our selection of top-rated featured products. These
-          high-quality items have received excellent reviews from our satisfied
-          customers. Whether youre a gamer, content creator, or building a
-          powerful workstation, our featured products are designed to meet your
-          specific needs and deliver exceptional performance.
+        <p className="text-center md:mt-3 md:mb-8 mb-3">
+          Check & Get Your Desired Product!
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {products?.slice(0, 6).map((product, idx) => (
-          <div key={idx} className="card  shadow-xl">
+          <div key={idx} className="card bg-white shadow-xl">
             <figure>
               <img
                 src={product?.image}
@@ -47,7 +43,7 @@ const FeaturedProduc = ({ products }) => {
 
               <div className="card-actions justify-end">
                 <Link href={`/product/${product?._id}`}>
-                  <button className="btn btn-primary uppercase">
+                  <button className="btn btn-sm btn-primary uppercase">
                     More Details
                   </button>
                 </Link>

@@ -24,28 +24,25 @@ const categories = [
 
 const FeaturedCategory = () => {
   return (
-    <div className="md:px-16 px-4 my-8">
+    <div className="md:px-16 px-4 my-12">
       <div className="">
         <h1 className="text-center font-bold text-3xl">Featured Categories</h1>
-        <p className="text-justify my-8">
-          Browse our selection of featured categories, each containing
-          top-of-the-line products for your computing needs. Whether youre
-          building a new PC or upgrading your existing setup, these categories
-          cover everything you need to enhance your computing experience.
+        <p className="text-center mt-3 mb-8">
+          Get Your Desired Product from Featured Category!
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-7 gap-3">
         {categories.map((category, idx) => (
           <Link key={idx} href={`catagories/${category.slug}`}>
-            <div className="card shadow-xl">
+            <div className="card bg-white shadow-xl hover:text-orange-600">
               <div className="card-body">
-                <div className="flex items-center gap-5">
+                <div className="flex flex-col items-center gap-3">
                   <img
                     src={category?.img}
                     alt=""
                     className="w-24 h-20 rounded-lg"
                   />
-                  <h2 className="text-1xl font-bold">{category.title}</h2>
+                  <h2 className="text-1xl font-semibold">{category.title}</h2>
                 </div>
               </div>
             </div>

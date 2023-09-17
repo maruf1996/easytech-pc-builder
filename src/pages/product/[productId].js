@@ -61,7 +61,7 @@ const ProductDetailsPage = ({ data }) => {
         </div>
       </div>
       <div className="">
-        <h3 className="text-primary font-bold text-2xl">Reviews:</h3>
+        <h3 className="text-primary font-bold text-2xl mt-4">Reviews:</h3>
         <div className="">
           {data?.reviews.map((review, index) => (
             <div key={index} className="card shadow-xl rounded-md p-4">

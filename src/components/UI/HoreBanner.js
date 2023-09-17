@@ -19,10 +19,12 @@ const HoreBanner = () => {
         <h1 className="text-2xl md:text-4xl font-bold mb-4">
           Computer Parts Store
         </h1>
-        <p className="text-lg mb-6 text-justify">
-          Discover the latest and greatest computer parts to power up your rig!
-          We have a wide selection of high-quality CPUs, GPUs, motherboards,
-          RAM, and more, to elevate your computing experience to new heights.
+        <p className="text-lg mb-6 text-justify italic">
+          EasyTech believes the most in customer satisfaction. To meet the
+          surging demand for online shopping, we launched our E-Commerce
+          Website. our highly trusted online shop has been regarded as one of
+          the best E-Commerce websites with most visits. EasyTech is
+          revolutionizing online shopping.
         </p>
         <Link href="/" className="btn btn-primary">
           Explore Now

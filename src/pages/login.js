@@ -10,7 +10,10 @@ const LoginPage = () => {
         <div className="space-y-4">
           <button
             onClick={() =>
-              signIn("google", { callbackUrl: "http://localhost:3000/" })
+              signIn("google", {
+                callbackUrl:
+                  "https://easytech-pc-builder-flpyvnse7-maruf1996.vercel.app/",
+              })
             }
             className="bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center space-x-2"
           >
@@ -32,7 +35,10 @@ const LoginPage = () => {
           </button>
           <button
             onClick={() =>
-              signIn("github", { callbackUrl: "http://localhost:3000/" })
+              signIn("github", {
+                callbackUrl:
+                  "https://easytech-pc-builder-flpyvnse7-maruf1996.vercel.app/",
+              })
             }
             className="bg-gray-800 text-white p-3 rounded-lg flex items-center justify-center space-x-2"
           >

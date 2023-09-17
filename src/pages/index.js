@@ -36,21 +36,12 @@ export const getStaticProps = async () => {
   );
   const data = await res.json();
 
-  const firstProductOfEachCategory = {};
-  data?.data.forEach((product) => {
-    const category = product.category;
-    if (!firstProductOfEachCategory[category]) {
-      firstProductOfEachCategory[category] = product;
-    }
-  });
-
-  const firstProducts = Object.values(firstProductOfEachCategory);
-  // console.log(firstProductOfEachCategory);
+  const shuffledProducts = data?.data.sort(() => Math.random() - 0.5);
+  const randomProducts = shuffledProducts.slice(0, 6);
 
   return {
     props: {
-      products: firstProducts,
+      products: randomProducts,
     },
-    revalidate: 10,
   };
 };

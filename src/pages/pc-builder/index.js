@@ -2,6 +2,7 @@ import RootLayout from "@/components/layouts/RootLayout";
 import { removeItem } from "@/redux/features/cart/cartSlice";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 const PcBuilderPage = ({ data }) => {
@@ -35,6 +36,10 @@ const PcBuilderPage = ({ data }) => {
   // Count the number of selected products under the 'Selected Product' column
   const selectedProductCount =
     Object.values(categoryProductMap).filter(Boolean).length;
+
+  const handleCompleteButton = () => {
+    toast.success("Your Order Successfully!");
+  };
 
   return (
     <div className="w-11/12 mx-auto mt-10">
@@ -86,6 +91,7 @@ const PcBuilderPage = ({ data }) => {
         </table>
         <div className="flex justify-center">
           <button
+            onClick={handleCompleteButton}
             className="btn btn-primary my-8"
             tabIndex="-1"
             role="button"
